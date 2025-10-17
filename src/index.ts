@@ -1,8 +1,8 @@
+import 'reflect-metadata'
 import express, {Application,  Request, Response } from 'express'
 import cors from 'cors'
 import http, { Server } from 'http'
-import { ApolloServer } from 'apollo-server-express'
-import { createApolloServer } from './apollo-server'
+import {startApolloServer } from './apollo-server'
 
 async function main(): Promise<void> {
   const app: Application = express() 
@@ -14,10 +14,7 @@ async function main(): Promise<void> {
 
  
   const httpServer: Server = http.createServer(app)
-  const apolloServer: ApolloServer = createApolloServer()
- 
-  await apolloServer.start()
-  apolloServer.applyMiddleware({  app: app as any, path: '/graphql' })
+  const apolloServer = await startApolloServer(app)
 
   httpServer.listen({ port: 4000 }, () => {
     console.log(

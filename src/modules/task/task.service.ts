@@ -1,4 +1,4 @@
-import { AddTaskInput, Task } from './task.model'
+import { AddTaskInput, Task } from './task.dto'
 
 class TaskService {
     private tasks: Task[] = [
@@ -10,7 +10,7 @@ class TaskService {
         return this.tasks
     }
 
-    async addTask(input: AddTaskInput): Promise<String> {
+    async addTask(input: AddTaskInput): Promise<string> {
         const newTask: Task = {
             id: '3',
             name: input.name,
