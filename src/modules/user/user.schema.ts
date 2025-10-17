@@ -1,18 +1,11 @@
 import { gql } from 'apollo-server-express'
-import { IResolvers } from '@graphql-tools/utils'
- 
-import { GraphQLModule } from '../types'
+import { IResolvers } from '@graphql-tools/utils' 
+import { SchemaModule } from '../types'
 import userService from './user.service'
+import { User } from './user.model'
 
-// ----- Model -----
-export interface User {
-  id: string
-  name: string
-}
 
- 
-// ----- GraphQL module -----
-export const UserGraphQLModule: GraphQLModule = {
+export const UserSchemaModule: SchemaModule = {
   typeDefs: gql`
     type User {
       id: ID!

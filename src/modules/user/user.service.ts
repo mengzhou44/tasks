@@ -1,4 +1,4 @@
-import { User } from './user.graphql'
+import { User } from './user.model'
 
 class UserService {
   private users: User[]  = [
